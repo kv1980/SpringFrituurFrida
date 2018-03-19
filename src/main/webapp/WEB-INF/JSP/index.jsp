@@ -11,5 +11,9 @@
 	<body>
 		<h1>Welkom bij Frituur Frida</h1>
 		<img src="images/${openOfGesloten}.png">
+		<dl>
+			<dt>Adres</dt><dd>${adres.straat} ${adres.huisNr}<br>
+							  ${adres.gemeente.postcode} ${adres.gemeente.naam}</dd>
+		</dl>
 	</body>
 </html>
