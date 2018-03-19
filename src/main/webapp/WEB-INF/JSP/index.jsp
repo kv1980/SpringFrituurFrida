@@ -10,6 +10,6 @@
 	</head>
 	<body>
 		<h1>Welkom bij Frituur Frida</h1>
-		<p>We zijn op dit ogenblik ${openOfGesloten}.</p>
+		<img src="images/${openOfGesloten}.png">
 	</body>
 </html>

@@ -5,4 +5,11 @@ body {
 
 h1 { 
 	color: red; 
+	text-align: center;
 	} 
+
+img {
+	margin-left: 33.3333333%;
+	width: 33.3333333%;
+}	
+	
