@@ -1,5 +1,7 @@
 package be.vdab.frituurfrida.entities;
 
+import java.util.Arrays;
+
 public class Saus {
 	private long nummer;
 	private String naam;
@@ -25,4 +27,11 @@ public class Saus {
 	public String[] getIngrediënten() {
 		return ingrediënten;
 	}
+
+//	public String getIngrediënten() {
+//		StringBuilder builder = new StringBuilder();
+//		Arrays.stream(ingrediënten).forEach(ingrediënt -> builder.append(", "+ingrediënt));
+//		return builder.substring(2).toString();
+//	}
+	
 }
