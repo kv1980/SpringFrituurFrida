@@ -1,4 +1,4 @@
-package be.vdab.friturrfrida.valueobjects;
+package be.vdab.frituurfrida.valueobjects;
 
 public class Adres {
 	private String straat;
