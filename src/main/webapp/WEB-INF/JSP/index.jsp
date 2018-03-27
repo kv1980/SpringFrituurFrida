@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<c:import url='/WEB-INF/JSP/menu.jsp'/>
-		<h1>Welkom bij Frituur Frida</h1>
+		<h1>${not empty reedsBezocht ? Welkom terug bij Frituur Frida : Welkom bij Frituur Frida}</h1>
 		<img class="groot" src="images/${openOfGesloten}.png">
 		<h2>Adres</h2>
 		${adres.straat} ${adres.huisNr}<br>
