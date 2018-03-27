@@ -6,12 +6,37 @@ body {
 h1 { 
 	color: red; 
 	text-align: center;
-	} 
+	}
+	 
+img .groot {
+	display: block;
+	margin: 0px auto;
+}	
 	
 img .klein {
 	width: 95px;
 	height: 85px;
+	margin: 50px;
 	}	
 	
-}	
+nav ul {
+	background-color: red;
+	padding: 0.4em 0;
+}
+
+nav li {
+	display: inline;
+}
+
+nav li a {
+	color: white;
+	font-weight: bold;
+	padding-left: 0.5em;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+nav li a:hover {
+	color: #F7FFCC;
+}
 	
