@@ -7,17 +7,28 @@ h1 {
 	color: red; 
 	text-align: center;
 	}
+	
+h2 {
+	margin-bottom: 2px;
+}	
+	
 	 
-img .groot {
+img.groot {
 	display: block;
+	width: 200px;
+	height: 75px;
 	margin: 0 auto;
 }	
 	
-img .klein {
+.sausFiguur {
 	width: 95px;
 	height: 85px;
-	margin: 50px;
 	}	
+	
+.sausTekst {
+	display: inline-block;
+	height: 85px;
+}	
 	
 nav ul {
 	background-color: red;
