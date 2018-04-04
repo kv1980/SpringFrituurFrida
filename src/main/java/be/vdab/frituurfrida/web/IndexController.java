@@ -19,7 +19,7 @@ import be.vdab.frituurfrida.valueobjects.Gemeente;
 @RequestMapping("/")
 class IndexController {
 	@GetMapping
-	ModelAndView index(@CookieValue(name="reedsBezocht",required=false) String reedsBezocht, HttpServletResponse response) {
+	ModelAndView index(@CookieValue(name="ReedsBezocht",required=false) String reedsBezocht, HttpServletResponse response) {
 		Cookie cookie = new Cookie("ReedsBezocht","ja");
 		cookie.setMaxAge(31_536_000);
 		response.addCookie(cookie);
@@ -28,7 +28,7 @@ class IndexController {
 		ModelAndView modelAndView = new ModelAndView("index","openOfGesloten",openOfGesloten)
 				.addObject("adres",new Adres("Vlamingstraat","10",new Gemeente("Wevelgem",8560)));
 		if (reedsBezocht != null) {
-			modelAndView.addObject("reedsBezocht",reedsBezocht);
+			modelAndView.addObject("reedsBezocht",true);
 		}
 		return modelAndView;
 	}
