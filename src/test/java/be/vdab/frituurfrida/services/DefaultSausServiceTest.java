@@ -1,19 +1,25 @@
 package be.vdab.frituurfrida.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import be.vdab.frituurfrida.entities.Saus;
 import be.vdab.frituurfrida.repositories.SausRepository;
 
+@RunWith(MockitoJUnitRunner.class)
 public class DefaultSausServiceTest {
 	private DefaultSausService service;
+	@Mock 
 	private SausRepository dummySausRepository;
 	private List<Saus> sauzenLijst = Arrays.asList(
 			new Saus(1L,"mayonaise", Arrays.asList("olie","eidooier","citroensap","mosterd")),
@@ -25,15 +31,13 @@ public class DefaultSausServiceTest {
 	
 	@Before
 	public void before() {
-		dummySausRepository = Mockito.mock(SausRepository.class);
-		Mockito.when(dummySausRepository.findAll())
-			   .thenReturn(sauzenLijst);
+		when(dummySausRepository.findAll()).thenReturn(sauzenLijst);
 		service = new DefaultSausService(dummySausRepository);
 	}
 	
 	@Test
 	public void serviceVindtDeLijstMetSauzen() {
 		assertEquals(sauzenLijst,service.findAll());
-		Mockito.verify(dummySausRepository).findAll();
+		verify(dummySausRepository).findAll();
 	}
 }
