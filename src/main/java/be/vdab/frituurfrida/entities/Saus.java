@@ -1,14 +1,16 @@
 package be.vdab.frituurfrida.entities;
 
+import java.util.List;
+
 public class Saus {
 	private long nummer;
 	private String naam;
-	private String[] ingrediënten;
+	private List<String> ingrediënten;
 	
 	public Saus() {
 	}
 
-	public Saus(long nummer, String naam, String[] ingrediënten) {
+	public Saus(long nummer, String naam, List<String> ingrediënten) {
 		this.nummer = nummer;
 		this.naam = naam;
 		this.ingrediënten = ingrediënten;
@@ -22,7 +24,7 @@ public class Saus {
 		return naam;
 	}
 
-	public String[] getIngrediënten() {
+	public List<String> getIngrediënten() {
 		return ingrediënten;
 	}
 }

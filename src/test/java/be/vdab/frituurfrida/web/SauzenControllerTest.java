@@ -1,10 +1,14 @@
 package be.vdab.frituurfrida.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.springframework.web.servlet.ModelAndView;
+
+import be.vdab.frituurfrida.services.SausService;
 
 public class SauzenControllerTest {
 	private SauzenController sauzenController;
@@ -12,7 +16,7 @@ public class SauzenControllerTest {
 
 	@Before
 	public void before() {
-		sauzenController = new SauzenController();
+		sauzenController = new SauzenController(Mockito.mock(SausService.class));
 		modelAndView = sauzenController.sauzen();
 	}
 	
