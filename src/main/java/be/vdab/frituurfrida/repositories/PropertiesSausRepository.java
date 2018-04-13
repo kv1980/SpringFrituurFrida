@@ -17,42 +17,43 @@ import be.vdab.frituurfrida.entities.Saus;
 import be.vdab.frituurfrida.exceptions.SausRepositoryException;
 
 @Component
-@Qualifier("CSV")
-class CSVSausRepository implements SausRepository {
-	private static final Path PAD = Paths.get("/data/sauzen.csv");
-	private static final Logger LOGGER = LoggerFactory.getLogger(CSVSausRepository.class);
-
+@Qualifier("properties")
+public class PropertiesSausRepository implements SausRepository{
+	private final static Logger LOGGER = LoggerFactory.getLogger(PropertiesSausRepository.class);
+	private final static Path PAD = Paths.get("/data/sauzen.properties");
+	
 	@Override
 	public List<Saus> findAll() {
-		List<Saus> sauzenlijst = new ArrayList<>();
-		try (BufferedReader reader = Files.newBufferedReader(PAD)) {  
-			for (String regel; (regel = reader.readLine()) != null;) {
-				regel.replaceAll("\\s+","");
-				String[] onderdelen = regel.split(",");
+		List<Saus> sauzenLijst = new ArrayList<>();;
+		try (BufferedReader reader = Files.newBufferedReader(PAD)){
+			for (String regel ; (regel = reader.readLine()) != null;) {
+				regel.replace("\\s+","");
+				String[] onderdelen = regel.split(":|,");
 				if (onderdelen.length < 2) {
 					String fout = PAD+": "+regel+" bevat minder dan 2 onderdelen";
 					LOGGER.error(fout);
 					throw new SausRepositoryException(fout);
 				}
 				try {
-					long nummer = Long.parseLong(onderdelen[0]);
+					Long nummer = Long.parseLong(onderdelen[0]);
 					String naam = onderdelen[1];
 					List<String> ingredienten = new ArrayList<>();
-					for (int i = 2; i<onderdelen.length;i++) {
+					for (int i = 2; i < onderdelen.length;i++) {
 						ingredienten.add(onderdelen[i]);
 					}
-					sauzenlijst.add(new Saus(nummer,naam,ingredienten));
+					sauzenLijst.add(new Saus(nummer,naam,ingredienten));
 				} catch (NumberFormatException ex) {
 					String fout = PAD+": "+regel+" bevat foutieve nummer van het type long";
 					LOGGER.error(fout,ex);
 					throw new SausRepositoryException(fout);
 				}
+				
 			}
 		} catch (IOException ex) {
 			String fout = PAD+": dit bestand kon niet worden ingelezen.";
 			LOGGER.error(fout,ex);
 			throw new SausRepositoryException(fout);
-		} 
-		return sauzenlijst;
+		}	
+		return sauzenLijst;	
 	}
 }
