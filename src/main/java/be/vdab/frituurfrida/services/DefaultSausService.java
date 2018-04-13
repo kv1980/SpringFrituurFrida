@@ -12,7 +12,7 @@ import be.vdab.frituurfrida.repositories.SausRepository;
 class DefaultSausService implements SausService {
 	private final SausRepository sausRepository;
 	
-	DefaultSausService(@Qualifier("CSV") SausRepository sausRepository){
+	DefaultSausService(@Qualifier("properties") SausRepository sausRepository){
 		this.sausRepository = sausRepository;
 	}
 
