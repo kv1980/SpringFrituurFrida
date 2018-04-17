@@ -1,0 +1,1 @@
+insert into frituurfrida(naam,prijs) values('test',10)
