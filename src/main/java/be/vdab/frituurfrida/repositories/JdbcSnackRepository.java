@@ -1,14 +1,18 @@
 package be.vdab.frituurfrida.repositories;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import be.vdab.frituurfrida.entities.Snack;
@@ -17,11 +21,16 @@ import be.vdab.frituurfrida.exceptions.SnackNietGevondenException;
 @Repository
 public class JdbcSnackRepository implements SnackRepository {
 	private NamedParameterJdbcTemplate template;
-	private final RowMapper<Snack> snackRowMapper = (resultSet,rowNum) -> new Snack(resultSet.getLong("id"),resultSet.getString("naam"),resultSet.getBigDecimal("prijs"));
-	private final String READ = "select id, naam, prijs from frituurfrida where id=:id";
-	private final String UPDATE = "update frituurfrida set naam=:naam, prijs=:prijs where id=:id";
-	private final String SELECT_BY_NAAM = "select id, naam, prijs from frituurfrida where naam=:naam";
-
+	private final RowMapper<Snack> snackRowMapper = (resultSet,rowNum) -> 
+		new Snack(resultSet.getLong("id"),resultSet.getString("naam"),resultSet.getBigDecimal("prijs"));
+	private static final String READ = "select id, naam, prijs from snacks where id=:id";
+	private static final String UPDATE = "update snacks set naam=:naam, prijs=:prijs where id=:id";
+	private static final String SELECT_BY_NAAM = "select id, naam, prijs from snacks where naam=:naam";
+	
+	public JdbcSnackRepository(NamedParameterJdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	public Optional<Snack> read(long id) {
 		try {
