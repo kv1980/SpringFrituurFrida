@@ -33,4 +33,14 @@ public class Snack {
 	public BigDecimal getPrijs() {
 		return prijs;
 	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (! (object instanceof Snack)) {
+			return false;
+		}
+		Snack other = (Snack) object;
+		return this.naam.equalsIgnoreCase(other.naam);
+	}
+	
 }

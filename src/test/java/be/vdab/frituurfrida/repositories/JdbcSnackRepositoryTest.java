@@ -64,7 +64,7 @@ public class JdbcSnackRepositoryTest extends AbstractTransactionalJUnit4SpringCo
 		Snack testSnack = new Snack(getIdVanTestSnack(),"test",BigDecimal.TEN);
 		int aantalGevondenSnacks = super.countRowsInTableWhere("snacks","naam = 'test'");
 		assertEquals(aantalGevondenSnacks,snackLijst.size());
-		assertTrue(snackLijst.contains(testSnack));
+		assertTrue(snackLijst.contains(testSnack)); //contains gebruikt ook equals-method
 	}
 
 	@Test
