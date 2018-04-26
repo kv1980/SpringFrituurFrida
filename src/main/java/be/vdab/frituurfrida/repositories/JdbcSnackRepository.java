@@ -21,12 +21,12 @@ public class JdbcSnackRepository implements SnackRepository {
 		new Snack(resultSet.getLong("id"),resultSet.getString("naam"),resultSet.getBigDecimal("prijs"));
 	private static final String READ = "select id, naam, prijs from snacks where id=:id";
 	private static final String UPDATE = "update snacks set naam=:naam, prijs=:prijs where id=:id";
-	private static final String SELECT_BY_NAAM = "select id, naam, prijs from snacks where naam=:naam";
+	private static final String SELECT_BY_BEGINNAAM = "select id, naam, prijs from snacks where naam like :beginNaam";
 	
 	public JdbcSnackRepository(NamedParameterJdbcTemplate template) {
 		this.template = template;
 	}
-	
+
 	@Override
 	public Optional<Snack> read(long id) {
 		try {
@@ -48,7 +48,7 @@ public class JdbcSnackRepository implements SnackRepository {
 	}
 
 	@Override
-	public List<Snack> findByNaam(String naam) {
-		return template.query(SELECT_BY_NAAM, Collections.singletonMap("naam",naam),snackRowMapper);
+	public List<Snack> findByBeginNaam(String beginNaam) {
+		return template.query(SELECT_BY_BEGINNAAM, Collections.singletonMap("beginNaam",beginNaam+'%'),snackRowMapper);
 	}
 }

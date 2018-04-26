@@ -59,17 +59,17 @@ public class JdbcSnackRepositoryTest extends AbstractTransactionalJUnit4SpringCo
 	}
 	
 	@Test
-	public void findBestaandeSnackByNaam () {
-		List<Snack> snackLijst = repository.findByNaam("test");
+	public void findBestaandeSnackByBeginNaam () {
+		List<Snack> snackLijst = repository.findByBeginNaam("t");
 		Snack testSnack = new Snack(getIdVanTestSnack(),"test",BigDecimal.TEN);
-		int aantalGevondenSnacks = super.countRowsInTableWhere("snacks","naam = 'test'");
+		int aantalGevondenSnacks = super.countRowsInTableWhere("snacks","naam like 't%'");
 		assertEquals(aantalGevondenSnacks,snackLijst.size());
 		assertTrue(snackLijst.contains(testSnack)); //contains gebruikt ook equals-method
 	}
 
 	@Test
 	public void notFindOnbestaandeSnackByNaam () {
-		List<Snack> snackLijst = repository.findByNaam("DitIsEenOnbestaandeNaamVoorEenSnack");
+		List<Snack> snackLijst = repository.findByBeginNaam("DitIsEenOnbestaandeNaamVoorEenSnack");
 		assertEquals(0,snackLijst.size());
 	}
 }
