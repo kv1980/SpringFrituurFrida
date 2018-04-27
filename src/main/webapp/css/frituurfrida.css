@@ -50,4 +50,12 @@ nav li a {
 nav li a:hover {
 	color: #F7FFCC;
 }
+
+#alfabet {
+		list-style-type: none;
+	}
+	
+#alfabet li {
+		display:inline;
+	}
 	

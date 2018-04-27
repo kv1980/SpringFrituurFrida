@@ -1,9 +1,9 @@
 package be.vdab.frituurfrida.web;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
-class BeginNaam {
-	@NotEmpty
+class BeginNaamForm {
+	@NotBlank
 	private String beginNaam;
 
 	public String getBeginNaam() {
