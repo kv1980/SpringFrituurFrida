@@ -9,10 +9,11 @@
 	</c:import>
 </head>
 <body>
+	<c:import url='/WEB-INF/JSP/menu.jsp'/>
 	<h1>Snacks (beginnaam)</h1>
-	<c:url var='url' value='snacks'/>
+	<c:url var='url' value='/snacks'/>
 	<form:form action='${url}' modelAttribute='beginNaamForm' method='get'>
-		<form:label path='beginNaam'>Begin van de naam:</form:label>
+		<form:label path='beginNaam'>Begin van de naam:<form:errors path='beginNaam'/></form:label>
 		<form:input path='beginNaam' autofocus='autofocus'/>
 		<input type='submit' value='Zoeken'/>
 		<form:errors/>

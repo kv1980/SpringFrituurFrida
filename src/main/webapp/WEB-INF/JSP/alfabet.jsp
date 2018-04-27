@@ -8,6 +8,7 @@
 	</c:import>
 </head>
 <body>
+	<c:import url='/WEB-INF/JSP/menu.jsp'/>
 	<h1>Snacks (alfabet)</h1>
 	<ul id='alfabet'>
 		<c:forEach var='letter' items='${alfabet}'>

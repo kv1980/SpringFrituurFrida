@@ -4,9 +4,9 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<c:import url="/WEB-INF/JSP/head.jsp">
-	<c:param name="title" value="Frituur Frida welkom" />
-</c:import>
+	<c:import url="/WEB-INF/JSP/head.jsp">
+		<c:param name="title" value="Frituur Frida welkom" />
+	</c:import>
 </head>
 <body>
 	<c:import url='/WEB-INF/JSP/menu.jsp' />

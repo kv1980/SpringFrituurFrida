@@ -25,14 +25,14 @@ class SnackController {
 	SnackController(SnackService snackService){
 		this.snackService = snackService;
 	}
-/*	
-	@GetMapping
-	ModelAndView snacks(){
+
+	@GetMapping("alfabet")
+	ModelAndView alfabet(){
 		return new ModelAndView(ALFABET_VIEW, "alfabet", ALFABET);
 	}		
-	*/
+
 	
-	@GetMapping
+	@GetMapping("beginnaam")
 	ModelAndView snacks() {
 		return new ModelAndView(BEGINNAAM_VIEW).addObject(new BeginNaamForm());
 	}
