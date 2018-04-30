@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +21,9 @@ class SnackController {
 	private static final char[] ALFABET =
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 	private final static String ALFABET_VIEW = "alfabet";
-	private final static String BEGINNAAM_VIEW= "beginNaam";
+	private final static String BEGINNAAM_VIEW = "beginNaam";
+	private final static String SNACK_WIJZIGEN_VIEW = "snackwijzigen";
+	private final static String REDIRECT_NA_WIJZIGEN_SNACK = "redirect:/";
 	private final SnackService snackService;
 	
 	SnackController(SnackService snackService){
@@ -56,5 +60,22 @@ class SnackController {
 			modelAndView.addObject("snacks",snacks);
 		}
 		return modelAndView;
+	}
+	
+	@GetMapping("{id}/wijzigen")
+	ModelAndView wijzigSnackVoorOpslaan(@PathVariable long id) {
+		ModelAndView modelAndView = new ModelAndView(SNACK_WIJZIGEN_VIEW);
+		snackService.read(id).ifPresent(snack ->
+		modelAndView.addObject(snack));
+		return modelAndView;
+	}
+	
+	@PostMapping("{id}/wijzigen")
+	String wijzigSnackNaOpslaan(@Valid Snack snack,BindingResult bindingResult) {
+		if (bindingResult.hasErrors()){
+			return SNACK_WIJZIGEN_VIEW;
+		}
+		snackService.update(snack);
+		return REDIRECT_NA_WIJZIGEN_SNACK;
 	}
 }
