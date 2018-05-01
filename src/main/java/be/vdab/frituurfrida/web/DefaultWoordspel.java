@@ -32,7 +32,7 @@ class DefaultWoordspel implements Woordspel, Serializable {
 		teRadenSaus = sauzen.get(ThreadLocalRandom.current().nextInt(sauzen.size())).getNaam();
 		reedsGeradenLetters = new StringBuilder();
 		IntStream.rangeClosed(1,teRadenSaus.length())
-				 .forEach(teller -> reedsGeradenLetters.append("."));
+				 .forEach(teller -> reedsGeradenLetters.append("X"));
 		aantalVerkeerdePogingen = 0;
 	}
 
@@ -66,7 +66,7 @@ class DefaultWoordspel implements Woordspel, Serializable {
 
 	@Override
 	public boolean isGewonnen() {
-		return reedsGeradenLetters.indexOf(".") == -1;
+		return reedsGeradenLetters.indexOf("X") == -1;
 	}
 
 	@Override
