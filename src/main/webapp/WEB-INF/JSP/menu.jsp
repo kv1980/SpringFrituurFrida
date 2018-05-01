@@ -6,6 +6,7 @@
 		<ul>
 			<li><a href='<c:url value='/'/>'>Welkom</a></li>
 			<li><a href='<c:url value='/sauzen'/>'>Sauzen</a></li>
+			<li><a href='<c:url value='/sauzen/spel'/>'>Woordspel</a></li>
 			<li><a href='<c:url value='/snacks/alfabet'/>'>Snacks alfabet</a></li>
 			<li><a href='<c:url value='/snacks/beginnaam'/>'>Snacks beginnaam</a></li>
 			<li><a href='<c:url value='/spel'/>'>Spel</a></li>
