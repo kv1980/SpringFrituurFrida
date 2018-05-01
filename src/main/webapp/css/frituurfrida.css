@@ -33,13 +33,14 @@ img.groot {
 nav ul {
 	background-color: red;
 	padding: 0.4em 0;
+	list-style: none;
 }
 
-nav li {
+nav ul li {
 	display: inline;
 }
 
-nav li a {
+nav ul li a {
 	color: white;
 	font-weight: bold;
 	padding-left: 0.5em;
@@ -47,7 +48,7 @@ nav li a {
 	vertical-align: middle;
 }
 
-nav li a:hover {
+nav ul li a:hover {
 	color: #F7FFCC;
 }
 

@@ -1,15 +1,12 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
+<%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html lang='nl'>
-<head>
-	<c:import url='/WEB-INF/JSP/head.jsp'>
-		<c:param name='title' value='Snacks (alfabet)'/>
-	</c:import>
-</head>
+<vdab:head title='Snack (alfabet)'/>
 <body>
-	<c:import url='/WEB-INF/JSP/menu.jsp'/>
+	<vdab:menu/>
 	<h1>Snacks (alfabet)</h1>
 	<ul id='alfabet'>
 		<c:forEach var='letter' items='${alfabet}'>

@@ -1,14 +1,12 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
+<%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html lang='nl'>
-<head>
-	<c:import url='/WEB-INF/JSP/head.jsp'>
-		<c:param name='title' value='Woordspel'/>
-	</c:import>
-</head>
+<vdab:head title='Woordspel'/>
 <body>
+	<vdab:menu/>
 	<h1>Saus raden</h1>
 	<c:choose>
 		<c:when test="${woordspel.verloren}">U bent verloren, de saus was ${woordspel.teRadenSaus}.</c:when>

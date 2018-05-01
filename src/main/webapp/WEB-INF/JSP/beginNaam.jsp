@@ -2,16 +2,13 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
 <%@taglib prefix='form' uri='http://www.springframework.org/tags/form' %>
+<%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 
 <!doctype html>
 <html lang='nl'>
-<head>
-	<c:import url='/WEB-INF/JSP/head.jsp'>
-		<c:param name='title' value='Snacks (beginnaam)'/>
-	</c:import>
-</head>
+<vdab:head title='Snack (beginletters)'/>
 <body>
-	<c:import url='/WEB-INF/JSP/menu.jsp'/>
+	<vdab:menu/>
 	<h1>Snacks (beginnaam)</h1>
 	<c:url var='url' value='/snacks'/>
 	<form:form action='${url}' modelAttribute='beginNaamForm' method='get'>
