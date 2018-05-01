@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.vdab.frituurfrida.entities.Snack;
+import be.vdab.frituurfrida.exceptions.SnackNietGevondenException;
 import be.vdab.frituurfrida.services.SnackService;
 
 @Controller
@@ -75,7 +76,11 @@ class SnackController {
 		if (bindingResult.hasErrors()){
 			return SNACK_WIJZIGEN_VIEW;
 		}
-		snackService.update(snack);
-		return REDIRECT_NA_WIJZIGEN_SNACK;
+		try {
+			snackService.update(snack);
+			return REDIRECT_NA_WIJZIGEN_SNACK;
+		} catch (SnackNietGevondenException ex) {
+			return SNACK_WIJZIGEN_VIEW;
+		}
 	}
 }
